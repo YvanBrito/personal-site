@@ -3,25 +3,81 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 41, 54, 77;
+  --background-end-rgb: 21, 26, 36;
+  --fade-duration: 1s;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+.fade-in-1 {
+  opacity: 0;
+  animation: fadeInBottomTop var(--fade-duration) 1s;
+  animation-fill-mode: forwards;
+}
+
+.fade-in-2 {
+  opacity: 0;
+  animation: fadeInBottomTop var(--fade-duration) 2s;
+  animation-fill-mode: forwards;
+}
+
+.fade-in-3 {
+  opacity: 0;
+  animation: fadeInBottomTop var(--fade-duration) 3s;
+  animation-fill-mode: forwards;
+}
+
+.fade-in-4 {
+  opacity: 0;
+  animation: fadeInBottomTop var(--fade-duration) 4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInBottomTop {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.fade-in-header {
+  opacity: 0;
+  animation: fadeInTopBottom var(--fade-duration) 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInTopBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.fade-in-photo {
+  opacity: 0;
+  animation: fadeInRightLeft var(--fade-duration) 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInRightLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
