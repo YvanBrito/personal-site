@@ -3,6 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { GiHamburgerMenu } from "react-icons/gi";
+import {
+  BsGithub,
+  BsInstagram,
+  BsLinkedin,
+  BsTwitter,
+  BsFillArrowDownCircleFill,
+} from "react-icons/bs";
 
 import perfilImg from "../assets/perfil.png";
 
@@ -21,7 +28,7 @@ export default function Home() {
       <Head>
         <title>Yvan Brito - Frontend Developer</title>
       </Head>
-      <header className="flex fade-in-header items-center justify-end absolute w-full h-14 mt-7 py-3 px-10">
+      <header className="flex fade-in-header items-center justify-end absolute w-full h-14 sm:mt-7 py-3 px-10">
         <nav className="inline-flex">
           <button
             onClick={() => {
@@ -34,7 +41,7 @@ export default function Home() {
             <GiHamburgerMenu className="inline w-8 h-8 rounded-sm hover:bg-gray-400 sm:hidden" />
           </button>
           <ul
-            className="mobile-menu hidden flex-col gap-12 absolute top-16 right-16 p-5 bg-white border border-gray-400 rounded-md sm:bg-transparent sm:p-0 sm:border-0 sm:mr-36 sm:flex sm:flex-row sm:static"
+            className="mobile-menu hidden z-10 flex-col gap-12 absolute top-16 right-16 p-5 bg-white border border-gray-400 rounded-md sm:bg-transparent sm:p-0 sm:border-0 sm:mr-36 sm:flex sm:flex-row sm:static"
             id="navbar-default"
           >
             <li className="mb-2">
@@ -56,44 +63,58 @@ export default function Home() {
         </nav>
       </header>
       <section>
-        <main className="h-screen pt-14 px-6 flex flex-col justify-center bg-[#29364d] items-center sm:px-12 lg:px-48 lg:flex-row-reverse">
-          <div className="fade-in-photo flex items-center justify-center w-2/3 mb-24">
-            <Image
-              className="rounded-full"
-              src={perfilImg}
-              alt="Yvan Brito"
-              width={500}
-            />
-          </div>
-          <div className="flex flex-col 2xl:w-2/3">
-            <span className={`${chivo.className} fade-in-1 text-gray-200 mb-8`}>
-              Hi, my name is
-            </span>
-            <h1
-              className={`${roboto.className} fade-in-2 text-[#c6d2e7] text-7xl font-bold lg:text-7xl`}
-            >
-              Yvan Brito.
-            </h1>
-            <span
-              className={`${roboto.className} fade-in-3 mb-8 text-[#c6d2e7] text-2xl lg:text-3xl`}
-            >
-              Building awesome applications since 2018.
-            </span>
-            <span
-              className={`${chivo.className} fade-in-4 text-[#c6d2e7] 2xl:w-4/5`}
-            >
-              I&apos;m a Frontend Developer specialized in developing awesome
-              digital experience. I&apos;m currently working for{" "}
-              <a
-                href="https://pagseguro.uol.com.br/"
-                target="_blank"
-                className="text-[#799434] hover:underline hover:text-[#B4E043]"
+        <main
+          style={{ height: "100dvh" }}
+          className="bg-[#29364d] flex flex-col items-center"
+        >
+          <div className="h-5/6 pt-24 px-6 flex flex-col justify-center items-center sm:px-12 lg:px-48 lg:flex-row-reverse">
+            <div className="fade-in-photo flex items-center justify-center w-2/3 mb-10">
+              <Image
+                className="rounded-full -z-10"
+                src={perfilImg}
+                alt="Yvan Brito"
+                width={500}
+              />
+            </div>
+            <div className="flex flex-col 2xl:w-2/3">
+              <span
+                className={`${chivo.className} fade-in-1 text-gray-200 mb-8`}
               >
-                Pagbank PagSeguro
-              </a>{" "}
-              building services for backoffice and advisory systems.
-            </span>
+                Hi, my name is
+              </span>
+              <h1
+                className={`${roboto.className} fade-in-2 text-[#c6d2e7] text-6xl font-bold lg:text-7xl`}
+              >
+                Yvan Brito.
+              </h1>
+              <span
+                className={`${roboto.className} fade-in-3 mb-8 text-[#c6d2e7] text-2xl lg:text-3xl`}
+              >
+                Building awesome applications since 2018.
+              </span>
+              <span
+                className={`${chivo.className} fade-in-4 text-[#c6d2e7] 2xl:w-4/5`}
+              >
+                I&apos;m a Frontend Developer specialized in developing awesome
+                digital experience. I&apos;m currently working for{" "}
+                <a
+                  href="https://pagseguro.uol.com.br/"
+                  target="_blank"
+                  className="text-[#799434] hover:underline hover:text-[#B4E043]"
+                >
+                  Pagbank PagSeguro
+                </a>{" "}
+                building services for backoffice and advisory systems.
+              </span>
+              <div className="text-[#c6d2e7] flex gap-6 mt-5">
+                <BsGithub className="w-8 h-8" />{" "}
+                <BsInstagram className="w-8 h-8" />{" "}
+                <BsLinkedin className="w-8 h-8" />{" "}
+                <BsTwitter className="w-8 h-8" />
+              </div>
+            </div>
           </div>
+          <BsFillArrowDownCircleFill className="w-8 h-8 mt-24 animate-bounce text-[#c6d2e7] lg:mt-14" />
         </main>
       </section>
       {/* <section className="h-screen bg-[#29364d]"></section> */}
