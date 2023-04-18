@@ -6,34 +6,17 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 41, 54, 77;
   --background-end-rgb: 21, 26, 36;
-  --fade-duration: 1s;
+  --fade-duration: 0.7s;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  background-color:#29364d;
 }
 
-.fade-in-1 {
+.fade-in-bottom-top {
   opacity: 0;
-  animation: fadeInBottomTop var(--fade-duration) 1s;
-  animation-fill-mode: forwards;
-}
-
-.fade-in-2 {
-  opacity: 0;
-  animation: fadeInBottomTop var(--fade-duration) 2s;
-  animation-fill-mode: forwards;
-}
-
-.fade-in-3 {
-  opacity: 0;
-  animation: fadeInBottomTop var(--fade-duration) 3s;
-  animation-fill-mode: forwards;
-}
-
-.fade-in-4 {
-  opacity: 0;
-  animation: fadeInBottomTop var(--fade-duration) 4s;
+  animation: fadeInBottomTop var(--fade-duration);
   animation-fill-mode: forwards;
 }
 
@@ -48,9 +31,9 @@ body {
   }
 }
 
-.fade-in-header {
+.fade-in-top-bottom {
   opacity: 0;
-  animation: fadeInTopBottom var(--fade-duration) 5s;
+  animation: fadeInTopBottom var(--fade-duration);
   animation-fill-mode: forwards;
 }
 
@@ -65,9 +48,9 @@ body {
   }
 }
 
-.fade-in-photo {
+.fade-in-right-left {
   opacity: 0;
-  animation: fadeInRightLeft var(--fade-duration) 5s;
+  animation: fadeInRightLeft var(--fade-duration);
   animation-fill-mode: forwards;
 }
 
@@ -75,6 +58,23 @@ body {
   0% {
     opacity: 0;
     transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.fade-in-left-right {
+  opacity: 0;
+  animation: fadeInLeftRight var(--fade-duration);
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInLeftRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
   }
   100% {
     opacity: 1;
