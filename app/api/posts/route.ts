@@ -1,38 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const posts = [
-  {
-    title: 'Post 1',
-    slug: 'post-1',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti provident repellendus, ullam...',
-  },
-  {
-    title: 'Post 2',
-    slug: 'post-2',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti provident repellendus, ullam...',
-  },
-  {
-    title: 'Post 3',
-    slug: 'post-3',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti provident repellendus, ullam...',
-  },
-  {
-    title: 'Post 4',
-    slug: 'post-4',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti provident repellendus, ullam...',
-  },
-]
-
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const slug = searchParams.get('slug')
+  const mostRecents = searchParams.get('mostRecents')
 
-  if (!slug) return NextResponse.json({ posts }, { status: 200 })
+  const response = await fetch(
+    'https://raw.githubusercontent.com/YvanBrito/blog-posts/main/posts-details.json',
+  )
+  const json = await response.text()
+  const postsDetails = JSON.parse(json)
 
-  const postWithSlug = posts.find((p) => p.slug === slug)
-  return NextResponse.json(postWithSlug, { status: 200 })
+  if (!slug && !mostRecents)
+    return NextResponse.json(postsDetails, { status: 200 })
+
+  if (slug) {
+    const secondResponse = await fetch(
+      `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/${slug}.md`,
+    )
+    const jsonRes = await secondResponse.text()
+    return NextResponse.json({ content: jsonRes }, { status: 200 })
+  }
+
+  const mostRecentsNumber = Number(mostRecents)
+  if (Number.isNaN(mostRecentsNumber))
+    return NextResponse.json(
+      { errorMessage: 'mostRecents não é um número' },
+      { status: 400 },
+    )
+
+  if (mostRecentsNumber) {
+    const mostRecentsPosts = postsDetails.slice(0, mostRecentsNumber)
+    console.log('server mostRecentsPosts', mostRecentsNumber, mostRecentsPosts)
+    return NextResponse.json(mostRecentsPosts, { status: 200 })
+  }
 }

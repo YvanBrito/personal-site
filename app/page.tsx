@@ -9,7 +9,7 @@ import {
 } from 'react-icons/bs'
 
 import perfilImg from '../assets/perfil.png'
-import { HamburguerMenu, Posts } from '@/components'
+import { Posts } from '@/components'
 import { Suspense } from 'react'
 
 const roboto = Roboto({
@@ -24,10 +24,6 @@ const chivo = Chivo_Mono({
 export default function Home() {
   return (
     <main>
-      <header className="flex items-center justify-between h-14 w-4/5 mx-auto py-3">
-        <div>YB</div>
-        <HamburguerMenu />
-      </header>
       <div className="lg:w-4/5 mx-auto">
         <section className="flex flex-col items-center lg:h-screen">
           <div className="h-[70dvh] pt-12 lg:pt-24 px-6 lg:px-0 flex flex-col justify-center items-center sm:flex-row-reverse">
@@ -127,7 +123,6 @@ export default function Home() {
           </Suspense>
         </section>
       </div>
-      <footer className="mt-10 h-8"></footer>
     </main>
   )
 }
