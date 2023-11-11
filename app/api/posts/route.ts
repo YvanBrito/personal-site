@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
 
   if (slug) {
     const secondResponse = await fetch(
-      `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/${slug}.md`,
+      `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/posts/${slug}.md`,
     )
     const jsonRes = await secondResponse.text()
     return NextResponse.json({ content: jsonRes }, { status: 200 })

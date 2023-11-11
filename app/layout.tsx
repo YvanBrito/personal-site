@@ -2,6 +2,7 @@ import { HamburguerMenu } from '@/components'
 import './globals.css'
 import './highlight.css'
 import Link from 'next/link'
+import Script from 'next/script'
 
 export const metadata = {
   title: 'Yvan Brito - Frontend Developer',
@@ -22,6 +23,11 @@ export default function RootLayout({
         </header>
         {children}
         <footer className="mt-10 h-8"></footer>
+        {/*eslint-disable-next-line @next/next/no-before-interactive-script-outside-document*/}
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+          strategy="beforeInteractive"
+        />
       </body>
     </html>
   )
