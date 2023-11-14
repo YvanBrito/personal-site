@@ -22,7 +22,7 @@ export default async function FullPost({
       </div>
       <Script
         id={`highlight-post-${params.slug}`}
-      >{`setInterval(hljs.highlightAll, 1000);`}</Script>
+      >{`hljs.highlightAll()`}</Script>
     </div>
   )
 }
