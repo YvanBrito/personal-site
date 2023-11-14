@@ -8,7 +8,7 @@ export default async function FullPost({
   params: { slug: string }
 }) {
   const response = await fetch(
-    `http://localhost:3000/api/posts?slug=${params.slug}`,
+    `http://${process.env.NEXT_PUBLIC_API}/api/posts?slug=${params.slug}`,
     {
       cache: 'no-store',
     },

@@ -10,9 +10,12 @@ export interface Post {
 }
 
 export async function getPosts() {
-  const res = await fetch('http://localhost:3000/api/posts?mostRecents=1', {
-    cache: 'no-store',
-  })
+  const res = await fetch(
+    `http://${process.env.NEXT_PUBLIC_API}/api/posts?mostRecents=1`,
+    {
+      cache: 'no-store',
+    },
+  )
 
   const response = await res.json()
 
