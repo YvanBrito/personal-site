@@ -1,24 +1,15 @@
 import ReactMarkdown from 'react-markdown'
 import Script from 'next/script'
-import './styles.css'
+import '@/styles/blog.css'
+import { getPosts } from '@/utils'
 
-export default async function FullPost({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  const response = await fetch(
-    `http://${process.env.NEXT_PUBLIC_API}/api/posts?slug=${params.slug}`,
-    {
-      cache: 'no-store',
-    },
-  )
-  const post: { content: string } = await response.json()
+export default async function Page({ params }: { params: { slug: string } }) {
+  const post = await getPosts({ slug: params.slug })
 
   return (
     <div className="w-2/3 m-auto">
       <div className="remove-all">
-        <ReactMarkdown>{post?.content}</ReactMarkdown>
+        <ReactMarkdown>{post}</ReactMarkdown>
       </div>
       <Script
         id={`highlight-post-${params.slug}`}

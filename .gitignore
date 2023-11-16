@@ -40,3 +40,5 @@ next-env.d.ts
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
+
+deploy.txt

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import './styles.css'
+import { getPosts } from '@/utils'
 
 export interface Post {
   title: string
@@ -9,21 +10,8 @@ export interface Post {
   coverImg: string
 }
 
-export async function getPosts() {
-  const res = await fetch(
-    `http://${process.env.NEXT_PUBLIC_API}/api/posts?mostRecents=1`,
-    {
-      cache: 'no-store',
-    },
-  )
-
-  const response = await res.json()
-
-  return response
-}
-
 const Posts = async () => {
-  const posts: Post[] = await getPosts()
+  const posts: Post[] = await getPosts({ mostRecents: 6 })
 
   return (
     <div className="w-full grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-2">

@@ -1,9 +1,10 @@
-import { Post, getPosts } from '@/components'
+import { Post } from '@/components'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getPosts } from '@/utils'
 
-export default async function FullPost() {
-  const posts: Post[] = await getPosts()
+export default async function Page() {
+  const posts: Post[] = await getPosts({ mostRecents: 6 })
 
   return (
     <div className="w-full lg:w-3/4 pt-12 m-auto flex flex-col items-center">

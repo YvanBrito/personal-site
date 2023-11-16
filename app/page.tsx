@@ -21,7 +21,7 @@ const chivo = Chivo_Mono({
   subsets: ['latin'],
 })
 
-export default function Home() {
+export default function Page() {
   return (
     <main>
       <div className="lg:w-4/5 mx-auto">

@@ -1,6 +1,6 @@
 import { HamburguerMenu } from '@/components'
-import './globals.css'
-import './highlight.css'
+import '@/styles/globals.css'
+import '@/styles/highlight.css'
 import Link from 'next/link'
 import Script from 'next/script'
 
