@@ -118,7 +118,7 @@ export default function Page() {
         <section className="mt-16 sm:mt-0 flex flex-col items-center">
           <h2 className="mb-16 text-4xl">Most Recent Posts</h2>
           <Suspense fallback={<div>Loading...</div>}>
-            <Posts />
+            <Posts quantity={4} />
           </Suspense>
         </section>
       </div>

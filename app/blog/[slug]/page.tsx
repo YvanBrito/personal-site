@@ -1,13 +1,13 @@
 import ReactMarkdown from 'react-markdown'
 import Script from 'next/script'
 import '@/styles/blog.css'
-import { getPosts } from '@/utils'
+import { getPostContent } from '@/utils'
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const post = await getPosts({ slug: params.slug })
+  const post = await getPostContent(params.slug)
 
   return (
-    <div className="w-2/3 m-auto">
+    <div className="w-[90%] m-auto lg:w-2/3">
       <div className="remove-all">
         <ReactMarkdown>{post}</ReactMarkdown>
       </div>

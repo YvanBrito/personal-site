@@ -1,9 +1,4 @@
-interface ISearchPostsParams {
-  slug?: string
-  mostRecents?: number
-}
-
-export const getPosts = async ({ slug, mostRecents }: ISearchPostsParams) => {
+export const getAllPostsDetails = async () => {
   const response = await fetch(
     'https://raw.githubusercontent.com/YvanBrito/blog-posts/main/posts-details.json',
     {
@@ -13,23 +8,22 @@ export const getPosts = async ({ slug, mostRecents }: ISearchPostsParams) => {
   const json = await response.text()
   const postsDetails = JSON.parse(json)
 
-  if (!slug && !mostRecents) return postsDetails
+  return postsDetails
+}
 
-  if (slug) {
-    const secondResponse = await fetch(
-      `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/posts/${slug}.md`,
-      {
-        cache: 'no-store',
-      },
-    )
-    return await secondResponse.text()
-  }
+export const getMostRecentPosts = async (quantity: number) => {
+  const postsDetails = await getAllPostsDetails()
 
-  const mostRecentsNumber = Number(mostRecents)
-  if (Number.isNaN(mostRecentsNumber)) return []
+  const mostRecentsPosts = postsDetails.slice(0, quantity)
+  return mostRecentsPosts
+}
 
-  if (mostRecentsNumber) {
-    const mostRecentsPosts = postsDetails.slice(0, mostRecentsNumber)
-    return mostRecentsPosts
-  }
+export const getPostContent = async (slug: string) => {
+  const secondResponse = await fetch(
+    `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/posts/${slug}.md`,
+    {
+      cache: 'no-store',
+    },
+  )
+  return await secondResponse.text()
 }
