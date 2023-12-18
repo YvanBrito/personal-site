@@ -1,4 +1,5 @@
 import { HamburguerMenu } from '@/components'
+import { headers } from 'next/headers'
 import '@/styles/globals.css'
 import '@/styles/highlight.css'
 import Link from 'next/link'
@@ -14,12 +15,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const headersList = headers()
+  const lang = headersList.get('x-lang') === '/pt' ? 'pt' : 'en'
   return (
-    <html lang="en">
+    <html lang={lang === 'en' ? 'en-US' : 'pt-BR'}>
       <body>
         <header className="flex items-center justify-between h-14 w-4/5 mx-auto py-3">
-          <Link href="/">YB</Link>
-          <HamburguerMenu />
+          <Link href={lang === 'en' ? '/' : '/pt'}>YB</Link>
+          <HamburguerMenu lang={lang} />
         </header>
         {children}
         <footer className="mt-10 h-8"></footer>

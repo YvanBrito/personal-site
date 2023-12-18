@@ -1,6 +1,6 @@
-export const getAllPostsDetails = async () => {
+export const getAllPostsDetails = async (lang: string) => {
   const response = await fetch(
-    'https://raw.githubusercontent.com/YvanBrito/blog-posts/main/posts-details.json',
+    `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/${lang}/posts-details.json`,
     {
       cache: 'no-store',
     },
@@ -11,16 +11,16 @@ export const getAllPostsDetails = async () => {
   return postsDetails
 }
 
-export const getMostRecentPosts = async (quantity: number) => {
-  const postsDetails = await getAllPostsDetails()
+export const getMostRecentPosts = async (quantity: number, lang: string) => {
+  const postsDetails = await getAllPostsDetails(lang)
 
   const mostRecentsPosts = postsDetails.slice(0, quantity)
   return mostRecentsPosts
 }
 
-export const getPostContent = async (slug: string) => {
+export const getPostContent = async (slug: string, lang: string) => {
   const secondResponse = await fetch(
-    `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/posts/${slug}.md`,
+    `https://raw.githubusercontent.com/YvanBrito/blog-posts/main/${lang}/posts/${slug}.md`,
     {
       cache: 'no-store',
     },

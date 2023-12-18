@@ -3,8 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
-const HamburguerMenu = () => (
-  <nav className="">
+const HamburguerMenu = ({ lang }: { lang: string }) => (
+  <nav>
     <button
       style={{ animationDelay: '3s' }}
       className="fade-in-top-bottom mb-2"
@@ -22,19 +22,26 @@ const HamburguerMenu = () => (
       id="navbar-default"
     >
       <li className="fade-in-top-bottom mb-2">
-        <Link href="/">
+        <Link href={lang === 'en' ? '/' : '/pt'}>
           <p className="text-black md:text-white">Home</p>
         </Link>
       </li>
       <li className="fade-in-top-bottom mb-2">
-        <Link href="/blog">
+        <Link href={lang === 'en' ? '/en/blog' : '/pt/blog'}>
           <p className="text-black md:text-white">Blog</p>
         </Link>
       </li>
       <li className="fade-in-top-bottom">
-        <Link href="/">
+        <Link href={lang === 'en' ? '/' : '/pt'}>
           <p className="text-black md:text-white">Portifolio</p>
         </Link>
+      </li>
+      <li className="fade-in-top-bottom">
+        <a href={lang === 'en' ? '/pt' : '/'}>
+          <p className="text-black md:text-white">
+            {lang === 'en' ? 'Versão em Português' : 'Version in English'}
+          </p>
+        </a>
       </li>
     </ul>
   </nav>

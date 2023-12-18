@@ -8,7 +8,7 @@ import {
   BsFillArrowDownCircleFill,
 } from 'react-icons/bs'
 
-import perfilImg from '../assets/perfil.png'
+import perfilImg from '@/assets/perfil.png'
 import { Posts } from '@/components'
 import { Suspense } from 'react'
 
@@ -42,7 +42,7 @@ export default function Page() {
                 style={{ animationDelay: '1s' }}
                 className={`${chivo.className} fade-in-bottom-top text-gray-200 lg:mb-8`}
               >
-                Hi, my name is
+                Olá, meu nome é
               </span>
               <h1
                 style={{ animationDelay: '1.5s' }}
@@ -54,13 +54,13 @@ export default function Page() {
                 style={{ animationDelay: '2s' }}
                 className={`${roboto.className} fade-in-bottom-top lg:mb-8 text-[#c6d2e7] text-2xl lg:text-3xl`}
               >
-                Building awesome applications since 2018.
+                Desenvolvendo aplicações incríveis desde 2018.
               </span>
               <span
                 style={{ animationDelay: '2.5s' }}
                 className={`${chivo.className} fade-in-bottom-top text-[#c6d2e7] 2xl:w-4/5`}
               >
-                I&apos;m a Frontend{' '}
+                Sou um desenvolvedor Frontend{' '}
                 <a
                   href="https://react.dev/"
                   target="_blank"
@@ -68,16 +68,17 @@ export default function Page() {
                 >
                   React.js
                 </a>{' '}
-                Developer specialized in developing awesome digital experience.
-                I&apos;m currently working for{' '}
+                especializado em desenvolver experiências digitais incríveis.
+                Atualmente estou trabalhando na{' '}
                 <a
                   href="https://pagseguro.uol.com.br/"
                   target="_blank"
                   className="text-[#799434] hover:underline hover:text-[#B4E043]"
                 >
-                  Pagbank PagSeguro
+                  Pagbank
                 </a>{' '}
-                building services for backoffice and advisory systems.
+                desenvolvendo serviços para backoffice e sistemas de
+                consultoria.
               </span>
               <div className="text-[#c6d2e7] flex gap-6 mt-5">
                 <a target="_blank" href="https://github.com/YvanBrito">
@@ -116,9 +117,9 @@ export default function Page() {
           <BsFillArrowDownCircleFill className="w-8 h-8 mt-24 animate-bounce text-[#c6d2e7]" />
         </section>
         <section className="mt-16 sm:mt-0 flex flex-col items-center">
-          <h2 className="mb-16 text-4xl">Most Recent Posts</h2>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Posts lang="en" quantity={4} />
+          <h2 className="mb-16 text-4xl">Postagens mais recentes</h2>
+          <Suspense fallback={<div>Carregando...</div>}>
+            <Posts lang="pt" quantity={4} />
           </Suspense>
         </section>
       </div>
